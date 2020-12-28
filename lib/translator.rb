@@ -16,10 +16,24 @@ def load_library(file_path)
   
 end
 
-def get_japanese_emoticon
+def get_japanese_emoticon(file_path, emoticon)
   # code goes here
+  working_lib = load_library(file_path)
+  
+  working_lib.each do |key, value|
+    if working_lib[key][:english] == emoticon
+      return working_lib[key][:japanese]
+    end
+  end
 end
 
-def get_english_meaning
+def get_english_meaning(file_path, emoticon)
   # code goes here
+  working_lib = load_library(file_path)
+  
+  working_lib.each do |key, value|
+    if working_lib[key][:japanese] == emoticon
+      return key
+    end
+  end
 end
